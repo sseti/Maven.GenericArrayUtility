@@ -40,18 +40,51 @@ public class ArrayUtility <T> {
             }
 
         }
-        T[] answer;
-        answer = Arrays.copyOf(inputArray, arraySize);
+        T[] result;
+        result = Arrays.copyOf(inputArray, arraySize);
         Integer count =0;
         for (int i = 0; i <inputArray.length ; i++) {
             if(inputArray[i]!=valueToRemove){
-                answer[count] = inputArray[i];
+                result[count] = inputArray[i];
                 count++;
             }
 
         }
-        return  answer;
+        return result;
+    }
+
+    public T getMostCommonFromMerge(T[] array){
+        T result = array[0];
+        Integer counter =1;
+        Integer counterTwo=0;
+        for (int i = 1; i <array.length ; i++) {
+            for (int j = 0; j <array.length-1 ; j++) {
+                if(array[i] == array[j]){
+                    counter++;
+                }
+
+            }
+            if(counter >counterTwo){
+                result = array[i];
+                counterTwo=counter;
+                counter=0;
+            }
+        }
+
+        return result;
+    }
+    public Integer getNumberOfOccurrences(T value){
+
+        Integer count = 0;
+        for (int i = 0; i <inputArray.length ; i++) {
+            if(inputArray[i] == value){
+                count++;
+            }
+
+        }
+        return count;
     }
 }
+
 
 
